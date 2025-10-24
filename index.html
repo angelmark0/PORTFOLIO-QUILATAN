@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngelMark Quilatan | Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+
+        /* ========================================
+        1. BASE STYLES & UTILITIES
+        ======================================== 
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Deep Dark Background */
+            color: #E0E0E0; /* Light Gray Text */
+            line-height: 1.6;
+        }
+        
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #282828; 
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem; 
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #BB86FC; /* Primary Accent Color (Violet) */
+        }
+
+        section {
+            padding: 6rem 0; 
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* ========================================
+        2. NAVBAR (Enhanced for Mobile)
+        ======================================== 
+        */
+        .navbar {
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #282828;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none; 
+            background: none;
+            border: none;
+            color: #BB86FC;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .navbar .logo-link {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .navbar ul li {
+            margin-left: 30px; 
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        .navbar ul li a:hover, .navbar ul li a.active {
+            color: #BB86FC;
+            border-bottom: 2px solid #BB86FC;
+        }
+
+        /* ========================================
+        3. HERO SECTION (HOME)
+        ======================================== 
+        */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px; 
+        }
+
+        .profile-pic {
+            width: 180px; 
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 6px solid #BB86FC; 
+            box-shadow: 0 0 30px rgba(187, 134, 252, 0.6); 
+        }
+
+        #home .hero-content p {
+            font-size: 1.3rem;
+            color: #A0A0A0;
+            font-weight: 300;
+            margin-top: 1rem;
+        }
+        
+        #home .tagline {
+            font-size: 1.8rem;
+            color: #BB86FC;
+            font-weight: 400;
+            margin-top: 0.5rem;
+        }
+
+        /* ========================================
+        4. ABOUT & SKILLS
+        ======================================== 
+        */
+        #about {
+            background: #181818;
+        }
+        
+        #about p {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            text-align: center;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skills span {
+            display: inline-block;
+            background: #333;
+            color: #BB86FC;
+            padding: 0.7rem 1.5rem; 
+            margin: 0.5rem;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .skills span:hover {
+            background: #BB86FC;
+            color: #121212;
+            cursor: default;
+        }
+        
+        /* ========================================
+        5. PROJECTS SECTION
+        ======================================== 
+        */
+        #projects {
+            background: #121212;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #212121;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border: 1px solid #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(187, 134, 252, 0.3);
+        }
+
+        .project-card-content {
+            padding: 1.5rem;
+        }
+
+        .project-card-content h3 {
+            color: #BB86FC;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .project-card-content p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            color: #D0D0D0;
+        }
+
+        .project-links a {
+            color: #BB86FC;
+            text-decoration: none;
+            font-weight: 500;
+            margin-right: 1.5rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+            padding: 5px 0;
+        }
+        
+        .project-links a:hover {
+            color: #fff;
+            border-bottom: 1px solid #BB86FC;
+        }
+
+        /* ========================================
+        6. EDUCATION SECTION 
+        ======================================== 
+        */
+        #education { 
+            background: #181818;
+        }
+
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .education-item {
+            background: #212121;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-left: 5px solid #BB86FC;
+        }
+
+        .education-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .education-item .details {
+            font-size: 1rem;
+            color: #A0A0A0;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .education-item .track {
+            font-style: italic;
+            color: #BB86FC;
+        }
+
+
+        /* ========================================
+        7. INTERESTS & CONTACT
+        ======================================== 
+        */
+        .interests {
+            text-align: center;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .interests span {
+            display: inline-block;
+            background: #333;
+            color: #BB86FC;
+            padding: 0.5rem 1rem;
+            margin: 0.3rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        #contact {
+            text-align: center;
+        }
+
+        #contact .info-item {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        #contact .contact-email {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #contact .contact-email:hover {
+            color: #BB86FC;
+        }
+
+        /* ========================================
+        8. FOOTER & RESPONSIVE DESIGN (Crucial for All Devices)
+        ======================================== 
+        */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: #181818;
+            border-top: 1px solid #333;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            #home {
+                min-height: 80vh;
+            }
+
+            .navbar .container {
+                /* Keep the logo and menu toggle side-by-side */
+                flex-direction: row; 
+                justify-content: space-between;
+            }
+            
+            /* Show the hamburger menu button */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Hide the main menu by default on small screens */
+            .navbar nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 61px; /* Below the navbar */
+                left: 0;
+                width: 100%;
+                background: rgba(18, 18, 18, 0.98);
+                border-top: 1px solid #282828;
+                padding: 10px 0;
+            }
+
+            /* When the menu is open, display it */
+            .navbar nav ul.show {
+                display: flex;
+            }
+
+            .navbar ul li {
+                margin: 10px 0; /* Stack items vertically */
+                text-align: center;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#home" class="logo-link">
+                <img src="images/cec.png" alt="CEC Logo" class="navbar-logo">
+                <span class="logo-text">Quilatan</span>
+            </a>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-item">Home</a></li>
+                    <li><a href="#about" class="nav-item">About</a></li>
+                    <li><a href="#projects" class="nav-item">Projects</a></li> 
+                    <li><a href="#education" class="nav-item">Education</a></li> 
+                    <li><a href="#contact" class="nav-item">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="hero-content animate-fade-in">
+            <div class="profile-container">
+                <img src="images/pic.png" alt="Angelmark Quilatan Profile" class="profile-pic animate-pop">
+                <div class="profile-glow"></div>
+            </div>
+
+            <p class="intro-text animate-slide-up" style="font-size: 1.2rem; color: #D0D0D0;">
+                <span class="wave">👋</span> Hi Everyone! I'm
+            </p>
+            <h1 class="name-title animate-slide-up">Angelmark Quilatan</h1>
+            <p class="tagline animate-slide-up">
+                <span class="highlight">Aspiring Web Developer</span> | 
+                <span class="highlight">Front-End Enthusiast</span>
+            </p>
+            <p class="description animate-slide-up" style="max-width: 600px; margin: 20px auto 0;">
+                I focus on learning the core of web development to build websites that are 
+                <span class="typing-text">clean, responsive, and user-friendly</span>
+            </p>
+
+            <style>
+                .animate-fade-in { animation: fadeIn 1s ease-in; }
+                .animate-slide-up { animation: slideUp 0.8s ease-out; }
+                .animate-pop { animation: pop 0.6s ease-out; }
+                
+                .profile-container {
+                    position: relative;
+                    margin-bottom: 2rem;
+                }
+
+                .profile-glow {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 200px;
+                    height: 200px;
+                    background: radial-gradient(circle, rgba(187,134,252,0.3) 0%, rgba(187,134,252,0) 70%);
+                    border-radius: 50%;
+                    animation: glow 2s ease-in-out infinite alternate;
+                }
+
+                .wave {
+                    display: inline-block;
+                    animation: wave 2s infinite;
+                }
+
+                .highlight {
+                    color: #BB86FC;
+                    position: relative;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 2px;
+                        bottom: -2px;
+                        left: 0;
+                        background: #BB86FC;
+                        transform: scaleX(0);
+                        transform-origin: right;
+                        transition: transform 0.3s ease;
+                    }
+                    &:hover:after {
+                        transform: scaleX(1);
+                        transform-origin: left;
+                    }
+                }
+
+                .typing-text {
+                    border-right: 2px solid #BB86FC;
+                    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+                }
+
+                @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+                @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+                @keyframes pop { 0% { transform: scale(0.8); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+                @keyframes glow { from { opacity: 0.5; } to { opacity: 1; } }
+                @keyframes wave { 0% { transform: rotate(0deg); } 20% { transform: rotate(15deg); } 40% { transform: rotate(-10deg); } 60% { transform: rotate(5deg); } 80% { transform: rotate(-5deg); } 100% { transform: rotate(0deg); } }
+                @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #BB86FC; } }
+            </style>
+        </div>
+    </section>
+    
+    <section class="cta-section" aria-label="Call to action" style="padding: 3rem 0; background: linear-gradient(180deg, rgba(18,18,18,0.0), rgba(24,24,24,0.6));">
+        <div class="container">
+            <div style="text-align:center; max-width:900px; margin:0 auto;">
+                <h2 style="font-size:2rem; margin-bottom:0.5rem; color:#fff;">Let's build something great together</h2>
+                <p style="color:#A0A0A0; margin-bottom:1.25rem;">
+                    I'm actively learning and available for projects, internships, or mentorship. Below are quick links to my work and contact options.
+                </p>
+
+                <div class="cta-buttons" style="display:inline-flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-bottom:1.25rem;">
+                    <a href="assets/Angelmark_Quilatan_Resume.pdf" download class="btn btn-primary" style="background:#BB86FC; color:#121212; padding:0.7rem 1.1rem; border-radius:8px; text-decoration:none; font-weight:600; box-shadow:0 6px 18px rgba(187,134,252,0.12);">
+                        Download Resume
+                    </a>
+                    <a href="#projects" class="btn btn-outline" style="border:1px solid #BB86FC; color:#BB86FC; padding:0.65rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline" style="border:1px solid #666; color:#E0E0E0; padding:0.65rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">
+                        Contact Me
+                    </a>
+                </div>
+
+                <div class="quick-stats" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:0.5rem;">
+                    <div style="background:#161616; padding:0.8rem 1rem; border-radius:10px; min-width:140px; text-align:center; border:1px solid #2a2a2a;">
+                        <div style="font-size:1.25rem; font-weight:700; color:#BB86FC;">3+</div>
+                        <div style="color:#A0A0A0; font-size:0.9rem;">Projects</div>
+                    </div>
+                    <div style="background:#161616; padding:0.8rem 1rem; border-radius:10px; min-width:140px; text-align:center; border:1px solid #2a2a2a;">
+                        <div style="font-size:1.25rem; font-weight:700; color:#BB86FC;">Front‑End</div>
+                        <div style="color:#A0A0A0; font-size:0.9rem;">HTML • CSS • JS</div>
+                    </div>
+                    <div style="background:#161616; padding:0.8rem 1rem; border-radius:10px; min-width:140px; text-align:center; border:1px solid #2a2a2a;">
+                        <div style="font-size:1.25rem; font-weight:700; color:#BB86FC;">Open</div>
+                        <div style="color:#A0A0A0; font-size:0.9rem;">To opportunities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            /* Minor hover states to match site feel */
+            .cta-buttons a:hover { transform: translateY(-3px); transition: transform 0.18s ease; }
+            .social-links a:hover { opacity:0.9; transform:translateY(-2px); transition: all 0.12s ease; }
+            @media (max-width:480px) {
+                .cta-buttons { gap:0.6rem; }
+                .quick-stats > div { min-width:120px; padding:0.7rem; }
+            }
+        </style>
+    </section>
+
+    <hr></div>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <p>
+                I'm a dedicated student focused on the front-end stack (HTML, CSS, JavaScript). I love taking a Figma or graphical design and making it live and interactive. I believe consistent effort and coding practice are the keys to growth. My ultimate goal is to build accessible and high-performance websites. Currently, I'm actively searching for any team or mentor who can provide practical experience on real-world projects.
+            </p>
+            <div class="skills">
+                <span style="background: #BB86FC; color: #121212;">**Current Focus**</span>
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript (ES6+)</span>
+                <span>C++ (Fundamentals)</span>
+                <span>Figma (UI/UX)</span>
+                <span>Responsive Design</span>
+                <span>Git/GitHub (Version Control)</span>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+    
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Work</h2>
+                <p style="font-size: 1.1rem; color: #A0A0A0; margin-top: -1rem;">These projects showcase my foundational skills in web development and my dedication to creating functional, responsive designs. They are a clear reflection of my hands on learning journey.</p>
+            </div>
+            
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Responsive Landing Page</h3>
+                        <p>A web page designed mobile-first. This project helped me master CSS Grid, Flexbox, and media queries to ensure it looks great on all screens.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo</a> 
+                            <a href="#" target="_blank">GitHub Repo</a> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Interactive JavaScript Tool</h3>
+                        <p>A simple, useful app (like a calculator or to-do list) made only with vanilla JavaScript. It was great practice for working with website elements (DOM manipulation).</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="#" target="_blank">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Portfolio Design Concept</h3>
+                        <p>A complete UI/UX design draft for a personal website, created using Figma. I focused on a modern dark look and ensuring it meets accessibility standards.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Figma Link</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="education"> 
+        <div class="container">
+            <div class="section-title">
+                <h2>Educational Background</h2>
+            </div>
+            
+            <div class="education-list">
+                <div class="education-item">
+                    <h3>ABELLANA NATIONAL SCHOOL</h3>
+                    <p class="track">Track: TVL (Technical-Vocational Livelihood)</p>
+                    <span class="details">Currently Enrolled & My Main Area of Study</span>
+                </div>
+                <div class="education-item">
+                    <h3>QUIOT NATIONAL HIGH SCHOOL</h3>
+                    <span class="details">Completed: 2021 - 2022</span>
+                </div>
+                <div class="education-item">
+                    <h3>QUIOT ELEMENTARY SCHOOL</h3>
+                    <span class="details">Completed: 2015 - 2016</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+
+    <section id="interests">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hobbies & Interests</h2>
+            </div>
+            <p style="text-align: center; max-width: 700px; margin: auto; font-size: 1.1rem; color: #A0A0A0;">
+                My interests help me maintain focus and creativity. They sharpen the soft skills like strategy, discipline, and visual thinking that I bring back to my code.
+            </p>
+            <div class="interests">
+                <span>Playing Online Games (Teamwork & Strategy)</span>
+                <span>Watching Anime (Visual Storytelling)</span>
+                <span>Listening to Music (Focus & Flow State)</span>
+                <span>Playing Basketball (Discipline & Agility)</span>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>MY INFO</h2>
+                <p style="font-size: 1.1rem; color: #A0A0A0; margin-top: -1rem;">I'm eager to contribute to real-world projects and grow my skills. Whether you need a responsive design, a simple landing page built, or just want to talk code, feel free to reach out!</p>
+            </div>
+            <p class="info-item">Sto Niño Quiot Cebu City</p>
+            <p class="info-item">
+                <a href="mailto:angelmarkquilatan@gmail.com" class="contact-email">angelmarkquilatan@gmail.com</a>
+            </p>
+            <p class="info-item">09502222741</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Angelmark Quilatan. Built and Designed by Angelmark. | All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navUl = document.querySelector('.navbar nav ul');
+            const navLinks = document.querySelectorAll('.navbar nav ul li a');
+            const sections = document.querySelectorAll('section');
+
+            // 1. Mobile Menu Toggle
+            menuToggle.addEventListener('click', () => {
+                navUl.classList.toggle('show');
+                menuToggle.querySelector('i').classList.toggle('fa-bars');
+                menuToggle.querySelector('i').classList.toggle('fa-xmark'); // Change icon to 'X'
+            });
+
+            // Close menu when a link is clicked (on mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navUl.classList.remove('show');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                        menuToggle.querySelector('i').classList.remove('fa-xmark');
+                    }
+                });
+            });
+
+            // 2. Active Link Highlighting on Scroll (Optional but professional touch)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove 'active' from all links
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        
+                        // Add 'active' to the link corresponding to the current section
+                        const activeLink = document.querySelector(`.navbar a[href="#${entry.target.id}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, {
+                rootMargin: "-50% 0px -50% 0px", // Check when the middle of the section is in the middle of the viewport
+                threshold: 0 // As soon as any part intersects
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>
